@@ -1,9 +1,13 @@
+import Image from "next/image";
+
 export default function Logo() {
-    return (
-      <img
-        src="/images/megaclick-logo.svg"
-        alt="MegaClick Logo"
-        width="160"
-      />
-    );
-  }
+  return (
+    <Image
+      src="/images/megaclick-logo.png"
+      alt="MegaClick Logo"
+      width={160}
+      height={50}
+      priority
+    />
+  );
+}
