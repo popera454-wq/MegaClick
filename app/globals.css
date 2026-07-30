@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap');
 
 :root {
@@ -34,4 +37,17 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
+}
+.nav-test {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 72px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
