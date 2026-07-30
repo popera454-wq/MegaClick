@@ -1,0 +1,214 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  Sparkles,
+  FileText,
+  Languages,
+  BrainCircuit,
+  ImageIcon,
+  Zap,
+} from "lucide-react";
+
+const cards = [
+  {
+    icon: Sparkles,
+    title: "משחק חדש",
+    text: "צרו משחק מכל נושא תוך שניות.",
+  },
+  {
+    icon: FileText,
+    title: "Word / PDF",
+    text: "צרו שאלות ממסמכים ומצגות.",
+  },
+  {
+    icon: Languages,
+    title: "20 שפות",
+    text: "תרגום אוטומטי לכל המשחק.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "רמת קושי",
+    text: "התאמה לקהל היעד.",
+  },
+  {
+    icon: ImageIcon,
+    title: "תמונות AI",
+    text: "הוספת תמונות מתאימות לכל שאלה.",
+  },
+  {
+    icon: Zap,
+    title: "חיסכון בזמן",
+    text: "חוסכים שעות של עבודה.",
+  },
+];
+
+export default function AISection() {
+  return (
+    <section
+      id="ai"
+      className="relative overflow-hidden py-32"
+    >
+      {/* VIDEO BACKGROUND */}
+
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source
+          src="/videos/ai-background.mp4"
+          type="video/mp4"
+        />
+      </video>
+
+      {/* Overlay */}
+
+      <div className="absolute inset-0 bg-[#050509]/80" />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-[#050509]/70 via-[#050509]/75 to-[#050509]" />
+
+      {/* Glow */}
+
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-purple-600/20 blur-[180px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+          {/* VIDEO */}
+
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div
+              className="
+              absolute
+              inset-0
+              bg-purple-500/20
+              blur-[90px]
+              rounded-full
+              scale-110
+              "
+            />
+
+            <div
+              className="
+              relative
+              overflow-hidden
+              rounded-[32px]
+              border
+              border-white/10
+              bg-white/5
+              backdrop-blur-xl
+              shadow-[0_40px_80px_rgba(0,0,0,.5)]
+              "
+            >
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full aspect-square object-cover"
+              >
+                <source
+                  src="/videos/ai-demo.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </motion.div>
+
+          {/* CONTENT */}
+
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-5xl font-extrabold leading-tight">
+              מחולל המשחקים החכם של
+              <span className="block bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                MegaClick
+              </span>
+            </h2>
+
+            <p className="mt-8 text-xl text-white/75 leading-9">
+              כתבו נושא או העלו מסמך, וה־AI ייצור עבורכם משחק אינטראקטיבי
+              מלא תוך שניות – כולל שאלות, תשובות ואפשרויות התאמה.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4 mt-10">
+
+              {cards.map((card) => {
+                const Icon = card.icon;
+
+                return (
+                  <div
+                    key={card.title}
+                    className="
+                    rounded-2xl
+                    border
+                    border-white/10
+                    bg-white/5
+                    backdrop-blur-xl
+                    p-5
+                    hover:border-cyan-400/40
+                    hover:bg-white/10
+                    hover:-translate-y-1
+                    transition-all
+                    duration-300
+                    "
+                  >
+                    <Icon
+                      size={28}
+                      className="text-cyan-300 mb-4"
+                    />
+
+                    <h3 className="font-bold text-lg">
+                      {card.title}
+                    </h3>
+
+                    <p className="text-white/60 mt-2 text-sm leading-7">
+                      {card.text}
+                    </p>
+                  </div>
+                );
+              })}
+
+            </div>
+
+            <button
+              className="
+              mt-10
+              px-8
+              py-4
+              rounded-full
+              bg-gradient-to-r
+              from-purple-500
+              via-blue-500
+              to-cyan-400
+              font-bold
+              text-lg
+              shadow-[0_0_60px_rgba(139,92,246,.45)]
+              hover:scale-105
+              hover:shadow-[0_0_80px_rgba(34,211,238,.55)]
+              transition-all
+              "
+            >
+              🚀 צרו משחק בעזרת AI בחינם
+            </button>
+
+          </motion.div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}
