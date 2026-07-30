@@ -1,218 +1,643 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Gamepad2, Plus } from "lucide-react";
+import {
+  ChevronDown,
+  Gamepad2,
+  Plus
+} from "lucide-react";
+
 import Logo from "./Logo";
+import {
+  languages,
+  translations
+} from "@/lib/translations";
 
-export default function Navbar() {
-  const menuItems = [
-    "יכולות",
-    "מערכת IVR",
-    "AI",
-    "הדגמה",
-    "שאלות נפוצות",
-  ];
-
-  return (
-    <motion.nav
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.7,
-        ease: "easeOut",
-      }}
-      className="
-      fixed
-      top-6
-      left-1/2
-      -translate-x-1/2
-      z-50
-
-      w-[92%]
-      max-w-[1500px]
-
-      h-[82px]
-
-      rounded-[30px]
-
-      border
-      border-white/15
-
-      bg-gradient-to-r
-      from-white/[0.12]
-      via-white/[0.08]
-      to-white/[0.12]
-
-      backdrop-blur-2xl
-
-      shadow-[0_20px_80px_rgba(0,0,0,0.45)]
-
-      flex
-      items-center
-      justify-between
-
-      px-8
-      "
-    >
-
-      {/* Glow ברקע */}
-      <div
-        className="
-        absolute
-        inset-0
-        rounded-[30px]
-        bg-gradient-to-r
-        from-purple-500/10
-        via-blue-500/10
-        to-cyan-400/10
-        pointer-events-none
-        "
-      />
+import {
+  useLanguage
+} from "./LanguageProvider";
 
 
-      {/* לוגו */}
-      <div className="relative z-10">
-        <Logo />
-      </div>
+export default function Navbar(){
+
+
+const {
+  language,
+  changeLanguage
+}=useLanguage();
+
+
+const [open,setOpen]=useState(false);
 
 
 
-      {/* תפריט */}
-      <div
-        className="
-        hidden
-        lg:flex
-        items-center
-        gap-9
-        relative
-        z-10
-        "
-      >
-
-        {menuItems.map((item) => (
-          <button
-            key={item}
-            className="
-            text-white/80
-            text-[15px]
-            font-medium
-
-            transition-all
-            duration-300
-
-            hover:text-white
-            hover:-translate-y-0.5
-            "
-          >
-            {item}
-          </button>
-        ))}
-
-      </div>
+const current =
+translations[language] ||
+translations.he;
 
 
 
-      {/* פעולות */}
-      <div
-        className="
-        flex
-        items-center
-        gap-3
-        relative
-        z-10
-        "
-      >
+return(
 
-        {/* שפה */}
-        <button
-          className="
-          hidden
-          md:flex
-          items-center
-          gap-1
-          text-white/90
-          hover:text-white
-          transition
-          "
-        >
-          🌍 עברית
-          <ChevronDown size={15}/>
-        </button>
+<motion.nav
+
+initial={{
+opacity:0,
+y:-30
+}}
+
+animate={{
+opacity:1,
+y:0
+}}
+
+transition={{
+duration:.8,
+ease:[0.22,1,0.36,1]
+}}
 
 
+className="
 
-        {/* הצטרפות */}
-        <button
-          className="
-          hidden
-          xl:flex
+fixed
 
-          items-center
-          gap-2
+top-5
 
-          px-5
-          py-3
+left-4
 
-          rounded-full
+right-4
 
-          border
-          border-white/20
+z-50
 
-          bg-white/5
+mx-auto
 
-          text-white
-
-          transition-all
-          duration-300
-
-          hover:bg-white/15
-          hover:scale-[1.03]
-          "
-        >
-          <Gamepad2 size={18}/>
-          הצטרפות למשחק
-        </button>
+max-w-[1500px]
 
 
-
-        {/* ראשי */}
-        <button
-          className="
-          flex
-          items-center
-          gap-2
-
-          px-6
-          py-3
-
-          rounded-full
-
-          bg-gradient-to-r
-          from-purple-500
-          via-blue-500
-          to-cyan-400
-
-          text-white
-
-          font-bold
-
-          shadow-[0_0_35px_rgba(139,92,246,0.45)]
-
-          transition-all
-          duration-300
-
-          hover:scale-[1.05]
-          hover:shadow-[0_0_55px_rgba(34,211,238,0.55)]
-          "
-        >
-          <Plus size={18}/>
-          יצירת משחק בחינם
-        </button>
+min-h-[82px]
 
 
-      </div>
+rounded-[28px]
 
 
-    </motion.nav>
-  );
+border
+
+border-white/15
+
+
+bg-[#08080c]/75
+
+
+backdrop-blur-2xl
+
+
+shadow-[0_25px_80px_rgba(0,0,0,.55)]
+
+
+flex
+
+items-center
+
+justify-between
+
+
+px-6
+
+
+"
+
+
+>
+
+
+
+{/* אור זכוכית */}
+
+<div
+
+className="
+
+absolute
+
+inset-0
+
+rounded-[28px]
+
+bg-gradient-to-r
+
+from-purple-500/10
+
+via-blue-500/10
+
+to-cyan-400/10
+
+pointer-events-none
+
+"
+
+/>
+
+
+
+
+
+{/* LOGO */}
+
+<div className="
+relative
+z-10
+shrink-0
+">
+
+<Logo/>
+
+</div>
+
+
+
+
+
+
+{/* MENU */}
+
+<div
+
+className="
+
+hidden
+
+xl:flex
+
+items-center
+
+gap-7
+
+relative
+
+z-10
+
+"
+
+>
+
+
+{current.menu.map(
+(item:string)=>(
+
+
+<button
+
+key={item}
+
+className="
+
+text-white/75
+
+font-semibold
+
+text-[15px]
+
+
+hover:text-white
+
+
+transition
+
+duration-300
+
+
+relative
+
+
+group
+
+"
+
+>
+
+
+{item}
+
+
+<span
+
+className="
+
+absolute
+
+bottom-[-7px]
+
+right-0
+
+h-[2px]
+
+w-0
+
+bg-gradient-to-r
+
+from-purple-400
+
+to-cyan-400
+
+
+transition-all
+
+duration-300
+
+
+group-hover:w-full
+
+"
+
+/>
+
+
+</button>
+
+
+))
+
+
+}
+
+
+</div>
+
+
+
+
+
+
+{/* ACTIONS */}
+
+<div
+
+className="
+
+relative
+
+z-10
+
+flex
+
+items-center
+
+gap-3
+
+"
+
+>
+
+
+
+
+
+{/* LANGUAGE */}
+
+<div className="relative">
+
+
+<button
+
+onClick={()=>setOpen(!open)}
+
+className="
+
+flex
+
+items-center
+
+gap-2
+
+
+px-3
+
+py-2
+
+
+rounded-full
+
+
+text-white
+
+
+font-semibold
+
+
+hover:bg-white/10
+
+
+transition
+
+"
+
+>
+
+🌍
+
+<span className="hidden md:block">
+
+{languages.find(
+x=>x.code===language
+)?.name}
+
+</span>
+
+
+<ChevronDown size={15}/>
+
+
+</button>
+
+
+
+
+
+{open && (
+
+<motion.div
+
+initial={{
+opacity:0,
+y:-10,
+scale:.95
+}}
+
+animate={{
+opacity:1,
+y:0,
+scale:1
+}}
+
+
+className="
+
+absolute
+
+top-12
+
+right-0
+
+
+w-56
+
+
+max-h-[350px]
+
+
+overflow-y-auto
+
+
+rounded-2xl
+
+
+border
+
+border-white/20
+
+
+bg-black/90
+
+
+backdrop-blur-xl
+
+
+p-2
+
+
+shadow-2xl
+
+"
+
+>
+
+
+{languages.map((lang)=>(
+
+
+<button
+
+
+key={lang.code}
+
+
+onClick={()=>{
+
+changeLanguage(lang.code);
+
+setOpen(false);
+
+}}
+
+
+className="
+
+w-full
+
+text-right
+
+
+px-4
+
+py-2
+
+
+rounded-xl
+
+
+text-white/80
+
+
+hover:bg-white/10
+
+
+hover:text-white
+
+
+transition
+
+
+"
+
+>
+
+{lang.name}
+
+
+</button>
+
+
+))}
+
+
+
+</motion.div>
+
+)}
+
+
+</div>
+
+
+
+
+
+
+
+
+{/* JOIN */}
+
+<button
+
+
+className="
+
+hidden
+
+lg:flex
+
+
+items-center
+
+gap-2
+
+
+px-5
+
+py-3
+
+
+rounded-full
+
+
+border
+
+border-white/20
+
+
+bg-white/5
+
+
+text-white
+
+
+font-semibold
+
+
+
+hover:bg-white/15
+
+
+hover:scale-[1.03]
+
+
+transition-all
+
+
+"
+
+>
+
+
+<Gamepad2 size={18}/>
+
+
+{current.join}
+
+
+</button>
+
+
+
+
+
+
+
+{/* CREATE */}
+
+<button
+
+
+className="
+
+
+flex
+
+
+items-center
+
+gap-2
+
+
+px-5
+
+py-3
+
+
+rounded-full
+
+
+bg-gradient-to-r
+
+
+from-purple-500
+
+
+via-blue-500
+
+
+to-cyan-400
+
+
+
+text-white
+
+
+font-extrabold
+
+
+
+shadow-[0_0_40px_rgba(139,92,246,.5)]
+
+
+
+hover:scale-[1.05]
+
+
+hover:shadow-[0_0_70px_rgba(34,211,238,.6)]
+
+
+transition-all
+
+
+"
+
+
+>
+
+
+<Plus size={18}/>
+
+
+{current.create}
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+
+</motion.nav>
+
+
+)
+
 }
