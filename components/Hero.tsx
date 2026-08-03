@@ -2,18 +2,39 @@
 
 import { motion } from "framer-motion";
 import { Play, Sparkles, Globe } from "lucide-react";
-import { translations } from "@/lib/translations";
+
 import { useLanguage } from "./LanguageProvider";
+import { translations } from "@/lib/translations";
 
 export default function Hero() {
+
   const { language } = useLanguage();
-  const t = translations[language] ?? translations.en;
-  const current = t.hero;
+
+  const t =
+    translations[language] ??
+    translations.en;
+
+  const hero = t.hero;
+
+  function scrollToDemo() {
+
+    document
+      .getElementById("demo")
+      ?.scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
   return (
-    <section id="hero">
-                  className="relative h-screen w-full overflow-hidden">
+
+    <section
+      id="hero"
+      className="relative h-screen w-full overflow-hidden"
     >
+
       {/* VIDEO */}
+
       <video
         className="absolute inset-0 h-full w-full object-cover"
         autoPlay
@@ -21,15 +42,20 @@ export default function Hero() {
         loop
         playsInline
       >
-        <source src="/videos/hero.mp4" type="video/mp4" />
+        <source
+          src="/videos/hero.mp4"
+          type="video/mp4"
+        />
       </video>
 
       {/* OVERLAY */}
+
       <div className="absolute inset-0 bg-black/55" />
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#050509]/40 via-[#050509]/45 to-[#050509]" />
 
       {/* GLOW */}
+
       <div
         className="
         absolute
@@ -61,6 +87,7 @@ export default function Hero() {
         px-6
         "
       >
+
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,7 +100,9 @@ export default function Hero() {
           max-w-5xl
           "
         >
-          {current.titlePart1}
+
+          {hero.titlePart1}
+
           <br />
 
           <span
@@ -86,8 +115,9 @@ export default function Hero() {
             text-transparent
             "
           >
-            {current.titleHighlight}
+            {hero.titleHighlight}
           </span>
+
         </motion.h1>
 
         <motion.p
@@ -102,7 +132,7 @@ export default function Hero() {
           leading-9
           "
         >
-          {current.subtitle}
+          {hero.subtitle}
         </motion.p>
 
         {/* BUTTONS */}
@@ -119,6 +149,7 @@ export default function Hero() {
           justify-center
           "
         >
+
           <button
             className="
             px-8
@@ -135,10 +166,11 @@ export default function Hero() {
             transition-all
             "
           >
-            {current.ctaPrimary}
+            {hero.ctaPrimary}
           </button>
 
           <button
+            onClick={scrollToDemo}
             className="
             flex
             items-center
@@ -154,10 +186,13 @@ export default function Hero() {
             transition
             "
           >
+
             <Play size={18} />
 
-            {t.demo.watchVideo}
+            {hero.ctaSecondary}
+
           </button>
+
         </motion.div>
 
         {/* FEATURES */}
@@ -175,33 +210,33 @@ export default function Hero() {
           text-white/90
           "
         >
+
           <div className="flex items-center gap-2">
             ⚡
-            <span>{current.bullets[0]}</span>
+            <span>{hero.bullets[0]}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <Sparkles size={18} />
-
-            <span>{current.bullets[1]}</span>
+            <span>{hero.bullets[1]}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <Globe size={18} />
-
-            <span>{current.bullets[2]}</span>
+            <span>{hero.bullets[2]}</span>
           </div>
+
         </motion.div>
 
         {/* SCROLL */}
 
         <motion.div
           animate={{
-            y: [0, 10, 0],
+            y: [0, 10, 0]
           }}
           transition={{
             repeat: Infinity,
-            duration: 2,
+            duration: 2
           }}
           className="
           absolute
@@ -212,7 +247,11 @@ export default function Hero() {
         >
           ↓
         </motion.div>
+
       </div>
+
     </section>
+
   );
+
 }
