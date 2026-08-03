@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react"; 
 
 const faqs = [
   {
@@ -44,14 +44,19 @@ export default function FAQSection() {
 
   return (
     <section
-    className="absolute inset-0 overflow-hidden">
+        id="faq"
+        className="relative py-32 bg-[#050509] overflow-hidden"
+    >
+{/* Background Video */}
+
+<div className="absolute inset-0 overflow-hidden">
 
     <video
         autoPlay
         muted
         loop
         playsInline
-        className="h-full w-full object-cover opacity-20"
+        className="h-full w-full object-cover opacity-500"
     >
         <source
             src="/videos/faq-bg.mp4"
@@ -59,8 +64,9 @@ export default function FAQSection() {
         />
     </video>
 
-    <div className="absolute inset-0 bg-[#050509]/90" />
+    <div className="absolute inset-0 bg-[#050509]/40" />
 
+</div>
       {/* Glow */}
 
       <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-blue-500/10 blur-[180px]" />

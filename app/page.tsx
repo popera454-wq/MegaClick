@@ -6,6 +6,9 @@ import IVRSection from "@/components/IVRSection";
 import DemoSection from "@/components/DemoSection";
 import FAQSection from "@/components/FAQSection";
 import AboutSection from "@/components/AboutSection";
+import FinalCTA from "@/components/FinalCTA";
+import Footer from "@/components/Footer";
+
 
 
 
@@ -40,6 +43,15 @@ export default function Home() {
       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <AboutSection />
+
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <FinalCTA />
+
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <Footer />
+
     </main>
   );
 }
