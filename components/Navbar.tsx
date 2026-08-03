@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -33,14 +34,16 @@ export default function Navbar() {
 
   const current = t.nav;
 
-  const sections = [
-    "features",
-    "ivr",
-    "ai",
-    "demo",
-    "faq",
-    "about"
-  ];
+  const router = useRouter();
+
+const sections = [
+  "features",
+  "ivr",
+  "ai",
+  "demo",
+  "faq",
+  "about",
+];
 
   function scrollToSection(id: string) {
 
@@ -60,6 +63,7 @@ export default function Navbar() {
 
 <motion.nav
 
+
 initial={{
 opacity:0,
 y:-30
@@ -76,19 +80,16 @@ ease:[0.22,1,0.36,1]
 }}
 
 className="
+hidden
+lg:flex
 
 fixed
-
 top-5
-
 left-4
-
 right-4
-
 z-50
 
 mx-auto
-
 max-w-[1500px]
 
 min-h-[82px]
@@ -96,23 +97,18 @@ min-h-[82px]
 rounded-[28px]
 
 border
-
 border-white/15
 
-bg-[#08080c]/75
+bg-[#050509]/20
 
-backdrop-blur-2xl
+backdrop-blur-3xl
 
-shadow-[0_25px_80px_rgba(0,0,0,.55)]
-
-flex
+shadow-[0_20px_60px_rgba(0,0,0,.35)]
 
 items-center
-
 justify-between
 
 px-6
-
 "
 
 >{/* אור זכוכית */}
@@ -443,40 +439,24 @@ transition
 
 <button
 
-onClick={()=>scrollToSection("hero")}
+onClick={() => router.push("/coming-soon")}
 
 className="
-
 hidden
-
 lg:flex
-
 items-center
-
 gap-2
-
 px-5
-
 py-3
-
 rounded-full
-
 border
-
 border-white/20
-
 bg-white/5
-
 text-white
-
 font-semibold
-
 hover:bg-white/15
-
 hover:scale-[1.03]
-
 transition-all
-
 "
 
 >
@@ -496,7 +476,7 @@ transition-all
 
 <button
 
-onClick={()=>scrollToSection("hero")}
+onClick={() => router.push("/coming-soon")}
 
 className="
 
