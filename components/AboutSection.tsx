@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import {
   Sparkles,
   Rocket,
@@ -20,6 +21,7 @@ export default function AboutSection() {
     translations.en;
 
   const current = t.about;
+  const router = useRouter();
 
   const cards = [
     {
@@ -156,23 +158,24 @@ export default function AboutSection() {
             </p>
 
             <button
-              className="
-              mt-10
-              rounded-full
-              bg-gradient-to-r
-              from-purple-500
-              via-blue-500
-              to-cyan-400
-              px-8
-              py-4
-              font-bold
-              hover:scale-105
-              transition-all
-              shadow-[0_0_60px_rgba(139,92,246,.4)]
-              "
-            >
-              {current.button}
-            </button>
+  onClick={() => router.push("/coming-soon")}
+  className="
+  mt-10
+  rounded-full
+  bg-gradient-to-r
+  from-purple-500
+  via-blue-500
+  to-cyan-400
+  px-8
+  py-4
+  font-bold
+  hover:scale-105
+  transition-all
+  shadow-[0_0_60px_rgba(139,92,246,.4)]
+  "
+>
+  {current.button}
+</button>
 
           </motion.div>
 

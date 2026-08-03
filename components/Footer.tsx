@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Logo from "./Logo";
 import {
   Mail,
@@ -19,6 +20,13 @@ export default function Footer() {
     translations.en;
 
   const current = t.footer;
+  const router = useRouter();
+
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({
+    behavior: "smooth",
+  });
+}
 
   return (
 
@@ -57,29 +65,29 @@ export default function Footer() {
             </h3>
 
             <div className="space-y-3 text-white/65">
-            <a href="#">
-              {current.links[0]}
-            </a>
+            <button onClick={() => scrollToSection("features")}>
+           {current.links[0]}
+            </button>
             <br />
 
-            <a href="#">
-              {current.links[1]}
-            </a>
+            <button onClick={() => scrollToSection("ai")}>
+             {current.links[1]}
+             </button>
             <br />
 
-            <a href="#demo">
+            <button onClick={() => scrollToSection("demo")}>
               {current.links[2]}
-            </a>
+            </button>
             <br />
 
-            <a href="#faq">
+            <button onClick={() => scrollToSection("faq")}>
               {current.links[3]}
-            </a>
+              </button>
             <br />
 
-            <a href="#about">
+            <button onClick={() => scrollToSection("about")}>
               {current.links[4]}
-            </a>
+              </button>
 
           </div>
 
@@ -153,6 +161,7 @@ export default function Footer() {
               </p>
 
               <button
+               onClick={() => router.push("/coming-soon")}
                 className="
                 mt-8
                 w-full

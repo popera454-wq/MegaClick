@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -22,6 +23,7 @@ export default function AISection() {
     translations.en;
 
   const current = t.ai;
+  const router = useRouter();
 
   const cards = [
     {
@@ -194,8 +196,15 @@ export default function AISection() {
               {current.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 mt-10">
-            {cards.map((card) => {
+            <div
+  className="
+  grid
+  grid-cols-1
+  sm:grid-cols-2
+  gap-4
+  mt-10
+  "
+>            {cards.map((card) => {
 
 const Icon = card.icon;
 
@@ -252,6 +261,7 @@ return (
 </div>
 
 <button
+onClick={() => router.push("/coming-soon")}
 className="
 mt-10
 px-8

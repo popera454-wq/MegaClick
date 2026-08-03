@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import QRCode from "react-qr-code";
 import {
@@ -21,6 +22,7 @@ export default function DemoSection() {
     translations.en;
 
   const current = t.demo;
+  const router = useRouter();
 
   const benefits = [
     {
@@ -367,8 +369,8 @@ export default function DemoSection() {
           "
         >
 
-          <a
-            href="#"
+            <button
+            onClick={() => router.push("/coming-soon")}
             className="
             px-10
             py-5
@@ -385,8 +387,8 @@ export default function DemoSection() {
             "
           >
             {current.cta}
-          </a>
-
+            </button>
+            
         </div>
         </div>
 

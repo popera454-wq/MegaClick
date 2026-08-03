@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -18,6 +19,13 @@ export default function FinalCTA() {
     translations.en;
 
   const current = t.final;
+  const router = useRouter();
+
+function scrollToDemo() {
+  document.getElementById("demo")?.scrollIntoView({
+    behavior: "smooth",
+  });
+}
 
   const stats = [
     {
@@ -187,7 +195,8 @@ export default function FinalCTA() {
             "
           >
 
-            <button
+              <button
+              onClick={() => router.push("/coming-soon")}
               className="
               rounded-full
               bg-gradient-to-r
@@ -206,7 +215,8 @@ export default function FinalCTA() {
               {current.createButton}
             </button>
 
-            <button
+              <button
+              onClick={scrollToDemo}
               className="
               rounded-full
               border

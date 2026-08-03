@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Play, Sparkles, Globe } from "lucide-react";
 
@@ -15,6 +16,7 @@ export default function Hero() {
     translations.en;
 
   const hero = t.hero;
+  const router = useRouter();
 
   function scrollToDemo() {
 
@@ -30,7 +32,12 @@ export default function Hero() {
 
     <section
       id="hero"
-      className="relative h-screen w-full overflow-hidden"
+      className="
+      relative
+      min-h-screen
+      w-full
+      overflow-hidden
+      "
     >
 
       {/* VIDEO */}
@@ -50,7 +57,7 @@ export default function Hero() {
 
       {/* OVERLAY */}
 
-      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-black/45" />
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#050509]/40 via-[#050509]/45 to-[#050509]" />
 
@@ -75,6 +82,8 @@ export default function Hero() {
       <div
         className="
         relative
+        pt-24
+        lg:pt-24
         z-20
         max-w-7xl
         mx-auto
@@ -93,8 +102,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: .8 }}
           className="
-          text-5xl
-          md:text-7xl
+          text-4xl
+          sm:text-5xl
+          lg:text-7xl
           font-extrabold
           leading-tight
           max-w-5xl
@@ -127,9 +137,12 @@ export default function Hero() {
           className="
           mt-8
           max-w-3xl
-          text-xl
+          text-base
+          sm:text-lg
+          lg:text-xl
+          leading-8
+          lg:leading-9
           text-white/75
-          leading-9
           "
         >
           {hero.subtitle}
@@ -145,22 +158,27 @@ export default function Hero() {
           flex
           flex-wrap
           gap-5
-          mt-10
+          mt-8
+          sm:mt-10
           justify-center
           "
         >
 
-          <button
+            <button
+            onClick={() => router.push("/coming-soon")}
             className="
-            px-8
-            py-4
+            px-6
+            sm:px-8
+            py-3
+            sm:py-4
+            text-base
+            sm:text-lg
             rounded-full
             bg-gradient-to-r
             from-purple-500
             via-blue-500
             to-cyan-400
             font-bold
-            text-lg
             shadow-[0_0_60px_rgba(139,92,246,.5)]
             hover:scale-105
             transition-all
@@ -205,9 +223,13 @@ export default function Hero() {
           flex
           flex-wrap
           justify-center
-          gap-8
+          gap-4
+          sm:gap-8
           mt-12
-          text-white/90
+          text-sm
+          sm:text-base
+          text-white
+          font-semibold
           "
         >
 
@@ -217,35 +239,15 @@ export default function Hero() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Sparkles size={18} />
+            <Sparkles size={20} />
             <span>{hero.bullets[1]}</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <Globe size={18} />
+            <Globe size={20} />
             <span>{hero.bullets[2]}</span>
           </div>
 
-        </motion.div>
-
-        {/* SCROLL */}
-
-        <motion.div
-          animate={{
-            y: [0, 10, 0]
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 2
-          }}
-          className="
-          absolute
-          bottom-8
-          text-white/70
-          text-3xl
-          "
-        >
-          ↓
         </motion.div>
 
       </div>
