@@ -4,6 +4,9 @@ import Features from "@/components/Features";
 import AISection from "@/components/AISection";
 import IVRSection from "@/components/IVRSection";
 import DemoSection from "@/components/DemoSection";
+import FAQSection from "@/components/FAQSection";
+import AboutSection from "@/components/AboutSection";
+
 
 
 
@@ -29,6 +32,14 @@ export default function Home() {
       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <DemoSection />
+
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <FAQSection />
+      
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <AboutSection />
     </main>
   );
 }
