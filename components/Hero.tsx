@@ -2,11 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Play, Sparkles, Globe } from "lucide-react";
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./LanguageProvider";
 
 export default function Hero() {
+  const { language } = useLanguage();
+  const t = translations[language] ?? translations.en;
+  const current = t.hero;
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-
+    <section id="hero">
+                  className="relative h-screen w-full overflow-hidden">
+    >
       {/* VIDEO */}
       <video
         className="absolute inset-0 h-full w-full object-cover"
@@ -67,7 +73,7 @@ export default function Hero() {
           max-w-5xl
           "
         >
-          הופכים כל מפגש
+          {current.titlePart1}
           <br />
 
           <span
@@ -80,7 +86,7 @@ export default function Hero() {
             text-transparent
             "
           >
-            לחוויה שכולם זוכרים.
+            {current.titleHighlight}
           </span>
         </motion.h1>
 
@@ -96,8 +102,7 @@ export default function Hero() {
           leading-9
           "
         >
-          יוצרים משחק אינטראקטיבי בחינם תוך דקות, משתפים קישור
-          או QR ונותנים לכולם להשתתף בזמן אמת מכל מכשיר.
+          {current.subtitle}
         </motion.p>
 
         {/* BUTTONS */}
@@ -130,7 +135,7 @@ export default function Hero() {
             transition-all
             "
           >
-            יצירת משחק בחינם
+            {current.ctaPrimary}
           </button>
 
           <button
@@ -151,7 +156,7 @@ export default function Hero() {
           >
             <Play size={18} />
 
-            צפה בהדגמה
+            {t.demo.watchVideo}
           </button>
         </motion.div>
 
@@ -172,19 +177,19 @@ export default function Hero() {
         >
           <div className="flex items-center gap-2">
             ⚡
-            <span>יצירה תוך דקות</span>
+            <span>{current.bullets[0]}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <Sparkles size={18} />
 
-            <span>AI מובנה</span>
+            <span>{current.bullets[1]}</span>
           </div>
 
           <div className="flex items-center gap-2">
             <Globe size={18} />
 
-            <span>תמיכה ב־20 שפות</span>
+            <span>{current.bullets[2]}</span>
           </div>
         </motion.div>
 

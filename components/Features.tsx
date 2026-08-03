@@ -58,10 +58,9 @@ const features = [
 
 export default function Features() {
   return (
-    <section
-      id="features"
-      className="relative py-28 px-6 bg-[#050509]"
-    >
+    <section id="features">
+            className="relative py-28 px-6 bg-[#050509]"
+  
       <div className="max-w-7xl mx-auto">
 
         {/* TITLE */}

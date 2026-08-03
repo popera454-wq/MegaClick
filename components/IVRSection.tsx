@@ -45,9 +45,8 @@ const cards = [
 
 export default function IVRSection() {
   return (
-    <section
-      id="ivr"
-      className="relative py-32 px-6 bg-[#050509] overflow-hidden"
+    <section id="ivr">
+    className="relative py-32 px-6 bg-[#050509] overflow-hidden"
     >
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-cyan-500/10 blur-[180px]" />
 

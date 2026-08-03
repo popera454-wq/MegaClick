@@ -5,8 +5,7 @@ import { Sparkles, Rocket, ShieldCheck, BrainCircuit } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section
-      id="about"
+    <section id="about">
       className="relative py-32 overflow-hidden bg-[#050509]"
     >
       {/* Glow */}

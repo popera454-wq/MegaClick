@@ -11,8 +11,7 @@ import {
 
 export default function DemoSection() {
   return (
-    <section
-      id="demo"
+    <section id="demo">
       className="relative overflow-hidden py-32 bg-[#050509]"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#050509] via-[#09090f] to-[#050509]" />

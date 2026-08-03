@@ -45,9 +45,8 @@ const cards = [
 
 export default function AISection() {
   return (
-    <section
-      id="ai"
-      className="relative overflow-hidden py-32"
+    <section id="ai">
+            className="relative overflow-hidden py-32"
     >
       {/* VIDEO BACKGROUND */}
 

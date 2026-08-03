@@ -43,8 +43,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section
-        id="faq"
+    <section id="faq">
         className="relative py-32 bg-[#050509] overflow-hidden"
     >
 {/* Background Video */}
