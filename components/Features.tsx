@@ -13,54 +13,42 @@ import {
 
 import { motion } from "framer-motion";
 
-const features = [
-  {
-    icon: BrainCircuit,
-    title: "AI חכם",
-    description: "צרו שאלות, תשובות והסברים בתוך שניות.",
-  },
-  {
-    icon: ImageIcon,
-    title: "מדיה עשירה",
-    description: "שלבו תמונות וסרטונים בכל שאלה.",
-  },
-  {
-    icon: Trophy,
-    title: "לוח תוצאות",
-    description: "הדירוג מתעדכן בזמן אמת לאורך המשחק.",
-  },
-  {
-    icon: Smartphone,
-    title: "כל מכשיר",
-    description: "טלפון, טאבלט ומחשב ללא התקנה.",
-  },
-  {
-    icon: PhoneCall,
-    title: "מערכת IVR",
-    description: "משחקים גם באמצעות שיחת טלפון.",
-  },
-  {
-    icon: Languages,
-    title: "20 שפות",
-    description: "המערכת זמינה בשפות המובילות בעולם.",
-  },
-  {
-    icon: Palette,
-    title: "התאמה אישית",
-    description: "לוגו, צבעים ותמונות בהתאמה מלאה.",
-  },
-  {
-    icon: Zap,
-    title: "תוך דקות",
-    description: "פותחים משחק חדש ומתחילים מיד.",
-  },
-];
+import { useLanguage } from "./LanguageProvider";
+import { translations } from "@/lib/translations";
 
 export default function Features() {
+
+  const { language } = useLanguage();
+
+  const t =
+    translations[language] ??
+    translations.en;
+
+  const section = t.features;
+
+  const icons = [
+    BrainCircuit,
+    ImageIcon,
+    Trophy,
+    Smartphone,
+    PhoneCall,
+    Languages,
+    Palette,
+    Zap,
+  ];
+
+  const features = section.items.map((item, index) => ({
+    ...item,
+    icon: icons[index],
+  }));
+
   return (
-    <section id="features">
-            className="relative py-28 px-6 bg-[#050509]"
-  
+
+    <section
+      id="features"
+      className="relative py-28 px-6 bg-[#050509]"
+    >
+
       <div className="max-w-7xl mx-auto">
 
         {/* TITLE */}
@@ -72,17 +60,22 @@ export default function Features() {
           transition={{ duration: .6 }}
           className="text-center mb-16"
         >
+
           <h2 className="text-5xl font-extrabold">
-            כל מה שצריך כדי ליצור
+
+            {section.titlePart1}
+
             <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              {" "}משחק מנצח
+              {" "}
+              {section.titleHighlight}
             </span>
+
           </h2>
 
           <p className="mt-6 text-white/70 max-w-3xl mx-auto text-xl leading-9">
-            צרו משחקים אינטראקטיביים בקלות, נהלו את המשתתפים בזמן אמת
-            ותיהנו מכל הכלים במקום אחד – ללא עלות.
+            {section.description}
           </p>
+
         </motion.div>
 
         {/* GRID */}
@@ -158,10 +151,12 @@ export default function Features() {
                     mb-6
                     "
                   >
+
                     <Icon
                       size={30}
                       className="text-cyan-300 transition-transform group-hover:rotate-6 group-hover:scale-110"
                     />
+
                   </div>
 
                   <h3 className="text-2xl font-bold mb-3">
@@ -183,6 +178,9 @@ export default function Features() {
         </div>
 
       </div>
+
     </section>
+
   );
+
 }

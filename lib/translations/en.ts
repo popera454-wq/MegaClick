@@ -27,12 +27,81 @@ export const en = {
     ]
   },
   ai: {
-    title: 'AI',
-    description: 'AI that understands intent, extracts data and drives actions to convert callers into customers.'
+    title: "The Smart Game Generator by",
+    brand: "MegaClick",
+    description:
+      "Enter a topic or upload a document and AI will generate a complete interactive game in seconds, including questions, answers and customization options.",
+  
+    button: "Create a Game with AI for Free",
+  
+    cards: [
+      {
+        title: "New Game",
+        text: "Generate a game from any topic in seconds."
+      },
+      {
+        title: "Word / PDF",
+        text: "Generate questions from documents and presentations."
+      },
+      {
+        title: "20 Languages",
+        text: "Automatic translation for the entire game."
+      },
+      {
+        title: "Difficulty Level",
+        text: "Adjust the game to your audience."
+      },
+      {
+        title: "AI Images",
+        text: "Generate matching images for every question."
+      },
+      {
+        title: "Save Time",
+        text: "Save hours of manual work."
+      }
+    ]
   },
   ivr: {
-    title: 'IVR',
-    description: 'Flexible IVR flows, routing and integrations with your systems.'
+    title: "Smart IVR System",
+    highlight: "for Phone Games",
+    description:
+      "No internet or app required. Players simply call, listen to the questions and participate in real time.",
+  
+    cards: [
+      {
+        title: "Phone Call",
+        text: "Join the game by dialing."
+      },
+      {
+        title: "Voice Questions",
+        text: "Questions are played automatically."
+      },
+      {
+        title: "Phone Keypad",
+        text: "Answer using phone digits."
+      },
+      {
+        title: "Real-Time",
+        text: "Results update instantly."
+      },
+      {
+        title: "For Everyone",
+        text: "Suitable for every age and skill level."
+      },
+      {
+        title: "Multi-language",
+        text: "Play in multiple languages."
+      }
+    ],
+  
+    button: "🎮 Try Phone Game",
+  
+    bottom: {
+      title:
+        "No internet? No smartphone? Need better accessibility?",
+      highlight:
+        "MegaClick IVR lets everyone participate."
+    }
   },
   demo: {
     title: 'Demo',
