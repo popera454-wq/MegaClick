@@ -36,6 +36,7 @@ export default function Navbar() {
 
   const router = useRouter();
 
+
 const sections = [
   "features",
   "ivr",
@@ -60,6 +61,7 @@ const sections = [
   }
 
   return (
+    <>
 
 <motion.nav
 
@@ -525,6 +527,78 @@ transition-all
 </div>
 
 </motion.nav>
+{/* Mobile Language Button */}
+
+<div className="fixed top-4 right-4 z-50 lg:hidden">
+
+<div className="relative">
+
+  <button
+    onClick={() => setOpen(!open)}
+    className="
+    h-10
+    w-10
+    rounded-full
+    bg-black/35
+    backdrop-blur-xl
+    border
+    border-white/10
+    flex
+    items-center
+    justify-center
+    text-lg
+    hover:bg-black/50
+    transition
+    "
+  >
+    🌍
+  </button>
+
+  {open && (
+    <motion.div
+      initial={{ opacity: 0, scale: .95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="
+      absolute
+      top-12
+      right-0
+      w-52
+      rounded-2xl
+      border
+      border-white/10
+      bg-black/85
+      backdrop-blur-xl
+      p-2
+      "
+    >
+      {languages.map((lang) => (
+        <button
+          key={lang.code}
+          onClick={() => {
+            changeLanguage(lang.code);
+            setOpen(false);
+          }}
+          className="
+          w-full
+          text-right
+          px-4
+          py-2
+          rounded-xl
+          text-white/80
+          hover:bg-white/10
+          transition
+          "
+        >
+          {lang.name}
+        </button>
+      ))}
+    </motion.div>
+  )}
+
+</div>
+
+</div>
+</>
 
 )
 
