@@ -97,13 +97,13 @@ min-h-[82px]
 rounded-[28px]
 
 border
-border-white/15
+border-white/12
 
-bg-[#050509]/20
+bg-black/20
 
 backdrop-blur-3xl
 
-shadow-[0_20px_60px_rgba(0,0,0,.35)]
+shadow-[0_20px_60px_rgba(0,0,0,.25)]
 
 items-center
 justify-between
