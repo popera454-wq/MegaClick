@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import AISection from "@/components/AISection";
+import IVRSection from "@/components/IVRSection";
+
 
 export default function Home() {
   return (
@@ -13,8 +15,14 @@ export default function Home() {
       <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <Features />
+     
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <AISection />
+
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+      <IVRSection />
     </main>
   );
 }
