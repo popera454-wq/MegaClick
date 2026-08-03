@@ -1,10 +1,41 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  Sparkles,
+} from "lucide-react";
+
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./LanguageProvider";
 
 export default function FinalCTA() {
+
+  const { language } = useLanguage();
+
+  const t =
+    translations[language] ??
+    translations.en;
+
+  const current = t.final;
+
+  const stats = [
+    {
+      number: "20",
+      title: current.stats[0],
+    },
+    {
+      number: "AI",
+      title: current.stats[1],
+    },
+    {
+      number: "IVR",
+      title: current.stats[2],
+    },
+  ];
+
   return (
+
     <section
       className="
       relative
@@ -12,6 +43,7 @@ export default function FinalCTA() {
       py-40
       "
     >
+
       {/* Background Video */}
 
       <video
@@ -35,9 +67,31 @@ export default function FinalCTA() {
 
       {/* Glow */}
 
-      <div className="absolute left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/15 blur-[170px]" />
+      <div
+        className="
+        absolute
+        left-1/2
+        top-1/2
+        h-[650px]
+        w-[650px]
+        -translate-x-1/2
+        -translate-y-1/2
+        rounded-full
+        bg-cyan-500/15
+        blur-[170px]
+        "
+      />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
+      <div
+        className="
+        relative
+        z-10
+        mx-auto
+        max-w-6xl
+        px-6
+        text-center
+        "
+      >
 
         <motion.div
           initial={{
@@ -52,7 +106,7 @@ export default function FinalCTA() {
             once: true,
           }}
           transition={{
-            duration: .8,
+            duration: 0.8,
           }}
         >
 
@@ -74,7 +128,8 @@ export default function FinalCTA() {
           >
             <Sparkles size={18} />
 
-            MegaClick
+            {current.badge}
+
           </div>
 
           <h2
@@ -85,7 +140,8 @@ export default function FinalCTA() {
             leading-tight
             "
           >
-            המשחק הבא
+            {current.title1}
+
             <br />
 
             <span
@@ -98,12 +154,13 @@ export default function FinalCTA() {
               text-transparent
               "
             >
-              שכולם ידברו עליו
+              {current.highlight}
             </span>
 
             <br />
 
-            מתחיל כאן.
+            {current.title2}
+
           </h2>
 
           <p
@@ -116,15 +173,11 @@ export default function FinalCTA() {
             mx-auto
             "
           >
-            צרו משחק אינטראקטיבי תוך דקות,
-            שתפו קישור או QR,
-            ותנו לכולם להשתתף בזמן אמת
-            מכל מכשיר.
+            {current.description}
           </p>
+                    {/* Buttons */}
 
-          {/* Buttons */}
-
-          <div
+                    <div
             className="
             mt-14
             flex
@@ -150,7 +203,7 @@ export default function FinalCTA() {
               transition-all
               "
             >
-              🚀 יצירת משחק בחינם
+              {current.createButton}
             </button>
 
             <button
@@ -168,12 +221,14 @@ export default function FinalCTA() {
               transition-all
               flex
               items-center
+              justify-center
               gap-3
               "
             >
-              צפו בהדגמה
+              {current.demoButton}
 
               <ArrowLeft size={20} />
+
             </button>
 
           </div>
@@ -189,21 +244,7 @@ export default function FinalCTA() {
             "
           >
 
-            {[
-              {
-                number: "20",
-                title: "שפות נתמכות"
-              },
-              {
-                number: "AI",
-                title: "יצירת משחקים חכמה"
-              },
-              {
-                number: "IVR",
-                title: "גם בטלפון"
-              }
-
-            ].map((item) => (
+            {stats.map((item) => (
 
               <div
                 key={item.title}
@@ -234,8 +275,8 @@ export default function FinalCTA() {
                 <div
                   className="
                   mt-3
-                  text-white/70
                   text-lg
+                  text-white/70
                   "
                 >
                   {item.title}
@@ -244,13 +285,14 @@ export default function FinalCTA() {
               </div>
 
             ))}
+                      </div>
 
-          </div>
+</motion.div>
 
-        </motion.div>
+</div>
 
-      </div>
+</section>
 
-    </section>
-  );
+);
+
 }

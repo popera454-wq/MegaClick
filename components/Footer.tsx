@@ -4,11 +4,24 @@ import Logo from "./Logo";
 import {
   Mail,
   Globe,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./LanguageProvider";
+
 export default function Footer() {
+
+  const { language } = useLanguage();
+
+  const t =
+    translations[language] ??
+    translations.en;
+
+  const current = t.footer;
+
   return (
+
     <footer className="relative overflow-hidden bg-[#050509] border-t border-white/10">
 
       {/* Glow */}
@@ -30,8 +43,7 @@ export default function Footer() {
             <Logo />
 
             <p className="mt-6 text-white/60 leading-8">
-              MegaClick היא פלטפורמה ליצירת משחקים אינטראקטיביים בזמן אמת,
-              עם AI, QR ומערכת IVR.
+              {current.logoParagraph}
             </p>
 
           </div>
@@ -41,65 +53,77 @@ export default function Footer() {
           <div>
 
             <h3 className="font-bold text-xl mb-5">
-              קישורים מהירים
+              {current.linksTitle}
             </h3>
 
             <div className="space-y-3 text-white/65">
+            <a href="#">
+              {current.links[0]}
+            </a>
+            <br />
 
-              <a href="#">יצירת משחק</a><br />
+            <a href="#">
+              {current.links[1]}
+            </a>
+            <br />
 
-              <a href="#">הצטרפות למשחק</a><br />
+            <a href="#demo">
+              {current.links[2]}
+            </a>
+            <br />
 
-              <a href="#demo">הדגמה</a><br />
+            <a href="#faq">
+              {current.links[3]}
+            </a>
+            <br />
 
-              <a href="#faq">שאלות נפוצות</a><br />
+            <a href="#about">
+              {current.links[4]}
+            </a>
 
-              <a href="#about">אודות</a>
+          </div>
+
+        </div>
+
+        {/* Contact */}
+
+        <div>
+
+          <h3 className="font-bold text-xl mb-5">
+            {current.contactTitle}
+          </h3>
+
+          <div className="space-y-5">
+
+            <div className="flex items-center gap-3">
+
+              <Mail
+                size={18}
+                className="text-cyan-300"
+              />
+
+              <span className="text-white/70">
+                {current.email}
+              </span>
+
+            </div>
+
+            <div className="flex items-center gap-3">
+
+              <Globe
+                size={18}
+                className="text-cyan-300"
+              />
+
+              <span className="text-white/70">
+                {current.site}
+              </span>
 
             </div>
 
           </div>
 
-          {/* Contact */}
-
-          <div>
-
-            <h3 className="font-bold text-xl mb-5">
-              יצירת קשר
-            </h3>
-
-            <div className="space-y-5">
-
-              <div className="flex items-center gap-3">
-
-                <Mail
-                  size={18}
-                  className="text-cyan-300"
-                />
-
-                <span className="text-white/70">
-                  megaclick.quiz@gmail.com
-                </span>
-
-              </div>
-
-              <div className="flex items-center gap-3">
-
-                <Globe
-                  size={18}
-                  className="text-cyan-300"
-                />
-
-                <span className="text-white/70">
-                  megaclick-quiz.vercel.app
-                </span>
-
-              </div>
-
-            </div>
-
-          </div>
-
+        </div>
           {/* CTA */}
 
           <div>
@@ -121,11 +145,11 @@ export default function Footer() {
               />
 
               <h3 className="text-2xl font-bold">
-                מוכנים להתחיל?
+                {current.readyTitle}
               </h3>
 
               <p className="mt-4 text-white/65 leading-8">
-                צרו את המשחק הראשון שלכם בחינם בתוך דקות.
+                {current.readyDesc}
               </p>
 
               <button
@@ -143,7 +167,7 @@ export default function Footer() {
                 transition-all
                 "
               >
-                🚀 יצירת משחק
+                {current.ctaButton}
               </button>
 
             </div>
@@ -152,14 +176,20 @@ export default function Footer() {
 
         </div>
 
-        <div className="mt-20 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div
+          className="
+          mt-20
+          border-t
+          border-white/10
+          pt-8
+          flex
+          justify-center
+          items-center
+          "
+        >
 
           <span className="text-white/45">
-            © 2026 MegaClick. All rights reserved.
-          </span>
-
-          <span className="text-white/35">
-            Built with ❤️ using Next.js
+            {current.copyright}
           </span>
 
         </div>
@@ -167,5 +197,7 @@ export default function Footer() {
       </div>
 
     </footer>
+
   );
+
 }

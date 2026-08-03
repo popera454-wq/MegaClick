@@ -1,53 +1,158 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Rocket, ShieldCheck, BrainCircuit } from "lucide-react";
+import {
+  Sparkles,
+  Rocket,
+  ShieldCheck,
+  BrainCircuit,
+} from "lucide-react";
+
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./LanguageProvider";
 
 export default function AboutSection() {
+
+  const { language } = useLanguage();
+
+  const t =
+    translations[language] ??
+    translations.en;
+
+  const current = t.about;
+
+  const cards = [
+    {
+      icon: BrainCircuit,
+      title: current.cards[0].title,
+      text: current.cards[0].text,
+    },
+    {
+      icon: ShieldCheck,
+      title: current.cards[1].title,
+      text: current.cards[1].text,
+    },
+    {
+      icon: Rocket,
+      title: current.cards[2].title,
+      text: current.cards[2].text,
+    },
+    {
+      icon: Sparkles,
+      title: current.cards[3].title,
+      text: current.cards[3].text,
+    },
+  ];
+
   return (
-    <section id="about">
-      className="relative py-32 overflow-hidden bg-[#050509]"
+
+    <section
+      id="about"
+      className="
+      relative
+      overflow-hidden
+      py-32
+      bg-[#050509]
+      "
     >
-      {/* Glow */}
+
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
-      <div className="absolute right-0 top-1/2 h-[500px] w-[500px] rounded-full bg-purple-500/10 blur-[160px]" />
+
+      <div
+        className="
+        absolute
+        right-0
+        top-1/2
+        h-[500px]
+        w-[500px]
+        rounded-full
+        bg-purple-500/10
+        blur-[160px]
+        "
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
 
-        <div className="grid lg:grid-cols-2 gap-14 items-center">
-
-          {/* TEXT */}
+        <div
+          className="
+          grid
+          lg:grid-cols-2
+          gap-14
+          items-center
+          "
+        >
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{
+              opacity: 0,
+              x: 40,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-cyan-300 font-semibold">
+
+            <span
+              className="
+              inline-flex
+              items-center
+              gap-2
+              rounded-full
+              border
+              border-cyan-400/20
+              bg-cyan-400/10
+              px-4
+              py-2
+              font-semibold
+              text-cyan-300
+              "
+            >
+
               <Sparkles size={18} />
-              נעים להכיר
+
+              {current.badge}
+
             </span>
 
             <h2 className="mt-6 text-5xl font-extrabold">
-              MegaClick
+            {current.title}
             </h2>
 
-            <p className="mt-8 text-xl leading-10 text-white/75">
-              MegaClick היא פלטפורמה ליצירת משחקים אינטראקטיביים בזמן אמת,
-              המאפשרת לכל אחד ליצור חוויית משחק מהנה במהירות ובקלות.
+            <p
+              className="
+              mt-8
+              text-xl
+              leading-10
+              text-white/75
+              "
+            >
+              {current.description}
             </p>
 
-            <p className="mt-6 text-lg leading-9 text-white/60">
-              המערכת משלבת בינה מלאכותית, מערכת IVR, תמיכה ב־20 שפות,
-              התאמה לכל מכשיר ועדכונים בזמן אמת כדי שכל אירוע,
-              שיעור או כנס יהפכו לחוויה שאנשים זוכרים.
+            <p
+              className="
+              mt-6
+              text-lg
+              leading-9
+              text-white/60
+              "
+            >
+              {current.description2}
             </p>
 
-            <p className="mt-6 text-lg leading-9 text-white/60">
-              בין אם אתם מורים, מרצים, בעלי עסקים, מארגני אירועים
-              או פשוט רוצים ליצור משחק מהנה —
-              MegaClick נבנתה כדי להפוך את התהליך לפשוט,
-              מהיר ונגיש לכולם.
+            <p
+              className="
+              mt-6
+              text-lg
+              leading-9
+              text-white/60
+              "
+            >
+              {current.description3}
             </p>
 
             <button
@@ -66,78 +171,83 @@ export default function AboutSection() {
               shadow-[0_0_60px_rgba(139,92,246,.4)]
               "
             >
-              🚀 התחילו ליצור משחק
+              {current.button}
             </button>
 
           </motion.div>
 
-          {/* FEATURES */}
-
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-6"
+            initial={{
+              opacity: 0,
+              x: -40,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            className="
+            grid
+            sm:grid-cols-2
+            gap-6
+            "
           >
+            {cards.map((card) => {
 
-            {[
-              {
-                icon: <BrainCircuit size={30} />,
-                title: "AI מתקדם",
-                text: "יוצר משחקים ושאלות תוך שניות."
-              },
-              {
-                icon: <ShieldCheck size={30} />,
-                title: "אמין ויציב",
-                text: "מתאים לאירועים, בתי ספר ועסקים."
-              },
-              {
-                icon: <Rocket size={30} />,
-                title: "מהיר במיוחד",
-                text: "משחק חדש בתוך דקות."
-              },
-              {
-                icon: <Sparkles size={30} />,
-                title: "חוויה מודרנית",
-                text: "עיצוב מרשים וחוויית משתמש מתקדמת."
-              }
-            ].map((card) => (
+const Icon = card.icon;
 
-              <div
-                key={card.title}
-                className="
-                rounded-3xl
-                border
-                border-white/10
-                bg-white/5
-                backdrop-blur-xl
-                p-7
-                hover:border-cyan-400/30
-                transition-all
-                "
-              >
-                <div className="text-cyan-300 mb-5">
-                  {card.icon}
-                </div>
+return (
 
-                <h3 className="text-xl font-bold">
-                  {card.title}
-                </h3>
+  <div
+    key={card.title}
+    className="
+    rounded-3xl
+    border
+    border-white/10
+    bg-white/5
+    backdrop-blur-xl
+    p-7
+    hover:border-cyan-400/30
+    transition-all
+    "
+  >
 
-                <p className="mt-3 text-white/65 leading-8">
-                  {card.text}
-                </p>
+    <div className="text-cyan-300 mb-5">
 
-              </div>
+      <Icon size={30} />
 
-            ))}
+    </div>
 
-          </motion.div>
+    <h3 className="text-xl font-bold">
+      {card.title}
+    </h3>
 
-        </div>
+    <p
+      className="
+      mt-3
+      text-white/65
+      leading-8
+      "
+    >
+      {card.text}
+    </p>
 
-      </div>
+  </div>
 
-    </section>
-  );
+);
+
+})}
+
+</motion.div>
+
+</div>
+
+</div>
+
+</section>
+
+);
+
 }

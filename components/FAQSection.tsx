@@ -2,191 +2,211 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react"; 
+import { ChevronDown } from "lucide-react";
 
-const faqs = [
-  {
-    q: "האם השימוש ב־MegaClick באמת בחינם?",
-    a: "כן. כל הכלים המרכזיים זמינים ללא תשלום."
-  },
-  {
-    q: "האם צריך להתקין אפליקציה?",
-    a: "לא. המשתתפים נכנסים באמצעות קישור או קוד QR ישירות מהדפדפן."
-  },
-  {
-    q: "כמה משתתפים יכולים לשחק יחד?",
-    a: "המערכת תומכת במספר רב של משתתפים בו־זמנית."
-  },
-  {
-    q: "באילו מכשירים אפשר לשחק?",
-    a: "בטלפון, בטאבלט ובמחשב."
-  },
-  {
-    q: "האם אפשר ליצור משחק בעזרת AI?",
-    a: "כן. מחולל ה־AI מסייע ביצירת משחקים תוך שניות."
-  },
-  {
-    q: "האם אפשר להוסיף תמונות וסרטונים?",
-    a: "כן. ניתן לשלב מדיה בכל שאלה."
-  },
-  {
-    q: "האם המערכת תומכת במספר שפות?",
-    a: "כן. MegaClick זמינה ב־20 שפות."
-  },
-  {
-    q: "איך מצטרפים למשחק?",
-    a: "באמצעות קישור, קוד QR או מערכת IVR."
-  }
-];
+import { translations } from "@/lib/translations";
+import { useLanguage } from "./LanguageProvider";
 
 export default function FAQSection() {
+
   const [open, setOpen] = useState<number | null>(0);
 
+  const { language } = useLanguage();
+
+  const t =
+    translations[language] ??
+    translations.en;
+
+  const current = t.faq;
+
   return (
-    <section id="faq">
-        className="relative py-32 bg-[#050509] overflow-hidden"
-    >
-{/* Background Video */}
 
-<div className="absolute inset-0 overflow-hidden">
-
-    <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="h-full w-full object-cover opacity-500"
+    <section
+      id="faq"
+      className="
+      relative
+      py-32
+      bg-[#050509]
+      overflow-hidden
+      "
     >
-        <source
+      {/* Background Video */}
+
+      <div className="absolute inset-0 overflow-hidden">
+
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover opacity-50"
+        >
+          <source
             src="/videos/faq-bg.mp4"
             type="video/mp4"
-        />
-    </video>
+          />
+        </video>
 
-    <div className="absolute inset-0 bg-[#050509]/40" />
+        <div className="absolute inset-0 bg-[#050509]/40" />
 
-</div>
+      </div>
+
       {/* Glow */}
 
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-blue-500/10 blur-[180px]" />
+      <div
+        className="
+        absolute
+        left-1/2
+        top-0
+        -translate-x-1/2
+        w-[700px]
+        h-[700px]
+        rounded-full
+        bg-blue-500/10
+        blur-[180px]
+        "
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
 
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{
+            opacity: 0,
+            y: 25,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
           className="text-center mb-20"
         >
+
           <h2 className="text-5xl font-extrabold">
-            כל מה שרציתם לדעת
+            {current.title}
           </h2>
 
-          <p className="mt-6 text-xl text-white/70 leading-9">
-            ריכזנו את השאלות הנפוצות ביותר.
-            <br />
-            אם לא מצאתם תשובה, נשמח לעזור.
+          <p
+            className="
+            mt-6
+            text-xl
+            text-white/70
+            leading-9
+            whitespace-pre-line
+            "
+          >
+            {current.description}
           </p>
 
         </motion.div>
 
         <div className="space-y-5">
 
-          {faqs.map((faq, index) => {
+        {current.items.map((faq, index) => {
 
-            const active = open === index;
+const active = open === index;
 
-            return (
+return (
 
-              <motion.div
-                key={faq.q}
-                layout
-                className="
-                rounded-3xl
-                border
-                border-white/10
-                bg-white/5
-                backdrop-blur-xl
-                overflow-hidden
-                "
-              >
+  <motion.div
+    key={faq.q}
+    layout
+    className="
+    rounded-3xl
+    border
+    border-white/10
+    bg-white/5
+    backdrop-blur-xl
+    overflow-hidden
+    "
+  >
 
-                <button
-                  onClick={() =>
-                    setOpen(active ? null : index)
-                  }
-                  className="
-                  w-full
-                  flex
-                  items-center
-                  justify-between
-                  px-8
-                  py-6
-                  text-right
-                  "
-                >
+    <button
+      onClick={() =>
+        setOpen(active ? null : index)
+      }
+      className="
+      w-full
+      flex
+      items-center
+      justify-between
+      px-8
+      py-6
+      text-right
+      "
+    >
 
-                  <h3 className="font-bold text-xl">
-                    {faq.q}
-                  </h3>
+      <h3 className="font-bold text-xl">
+        {faq.q}
+      </h3>
 
-                  <motion.div
-                    animate={{
-                      rotate: active ? 180 : 0
-                    }}
-                  >
-                    <ChevronDown />
-                  </motion.div>
+      <motion.div
+        animate={{
+          rotate: active ? 180 : 0,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+      >
+        <ChevronDown />
+      </motion.div>
 
-                </button>
+    </button>
 
-                <AnimatePresence>
+    <AnimatePresence>
 
-                  {active && (
+      {active && (
 
-                    <motion.div
-                      initial={{
-                        height: 0,
-                        opacity: 0
-                      }}
-                      animate={{
-                        height: "auto",
-                        opacity: 1
-                      }}
-                      exit={{
-                        height: 0,
-                        opacity: 0
-                      }}
-                    >
+        <motion.div
+          initial={{
+            height: 0,
+            opacity: 0,
+          }}
+          animate={{
+            height: "auto",
+            opacity: 1,
+          }}
+          exit={{
+            height: 0,
+            opacity: 0,
+          }}
+          transition={{
+            duration: 0.25,
+          }}
+        >
 
-                      <div
-                        className="
-                        px-8
-                        pb-7
-                        text-white/70
-                        leading-8
-                        text-lg
-                        "
-                      >
-                        {faq.a}
-                      </div>
+          <div
+            className="
+            px-8
+            pb-7
+            text-white/70
+            leading-8
+            text-lg
+            "
+          >
+            {faq.a}
+          </div>
 
-                    </motion.div>
+        </motion.div>
 
-                  )}
+      )}
 
-                </AnimatePresence>
+    </AnimatePresence>
 
-              </motion.div>
+  </motion.div>
 
-            );
+);
 
-          })}
+})}
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </section>
-  );
+</section>
+
+);
+
 }
